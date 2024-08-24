@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Genshin Impact Character Viewer</title>
+</head>
+<body>
+    <div class="container">
+        <div class="toggle-container">
+            <div id="theme-toggle" class="toggle-button">
+                <div class="toggle-circle"></div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search for a character...">
+            <button id="search-button"><i class='bx bx-search'></i></button>
+        </div>
+
+        <div class="nav-buttons" id="nav-buttons">
+            <button id="left" class="nav-button"><i class='bx bxs-left-arrow'></i> Previous</button>
+            <button id="right" class="nav-button">Next <i class='bx bxs-right-arrow' ></i></button>
+        </div>
+
+        <div class="content" id="content"></div>
+        <img id="loading" src="assets/gif/loading.gif" alt="Loading..." style="border-radius: 50%;">
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <script id="character" type="text/x-handlebars-template">
+        <h1>{{name}}</h1>
+        <p><strong>ID:</strong> {{id}}</p>
+        <p><strong>Weapon:</strong> {{weapon}}</p>
+        <p><strong>Vision:</strong> {{vision}}</p>
+        <p><strong>Birthday:</strong> {{birthday}}</p>
+        <p><strong>Region:</strong> {{region}}</p>
+        <p><strong>Affiliation:</strong> {{affiliation}}</p>
+        <p><strong>Special Dish:</strong> {{special_dish}}</p>
+        <p><strong>Wiki:</strong> <a href="{{wiki_url}}" target="_blank">Go to Wiki</a></p>
+        <p><strong>Videos:</strong></p>
+        {{#each videos}}
+        <div class="video-container">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{this}}" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+        </div>
+        {{/each}}
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
